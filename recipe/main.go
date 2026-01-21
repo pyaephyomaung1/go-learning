@@ -118,17 +118,6 @@ func fakeAI() {
 	}
 }
 
-func findRecipes(userIngredients []string, recipes []Recipe) []Recipe {
-	var matched []Recipe
-
-	for _, recipe := range recipes {
-		if hasAllIngredients(userIngredients, recipe.Ingredients) {
-			matched = append(matched, recipe)
-		}
-	}
-	return matched
-}
-
 func hasAllIngredients(userIngredients, required []string) bool {
 	ingredientMap := make(map[string]bool)
 	for _, ing := range userIngredients {
@@ -141,4 +130,15 @@ func hasAllIngredients(userIngredients, required []string) bool {
 		}
 	}
 	return true
+}
+
+func findRecipes(userIngredients []string, recipes []Recipe) []Recipe {
+	var matched []Recipe
+
+	for _, recipe := range recipes {
+		if hasAllIngredients(userIngredients, recipe.Ingredients) {
+			matched = append(matched, recipe)
+		}
+	}
+	return matched
 }
